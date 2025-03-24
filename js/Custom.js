@@ -25,9 +25,10 @@ const ditsy = document.getElementById('days');
 
 const clock = setInterval(function time() {
     const time = document.querySelector("#time");
+    //const day = document.querySelector("#days")
     let today = new Date();
     let d = today.getDate();
-    let m = today.getMonth();
+    let m = today.toLocaleString('default',{month: 'long'});
     let y = today.getFullYear();
     let h = today.getHours();
     let min = today.getMinutes();
@@ -37,10 +38,10 @@ const clock = setInterval(function time() {
     //let count = 3 
 //console.log(monthName[count]);
 
-let day_night = "PM"
+let day_night = "AM"
 if(h > 12) {
     //console.log(hour);
-    day_night = "AM"
+    day_night = "PM"
     h = h - 12;   
 }
 if(h < 10) {
@@ -52,10 +53,18 @@ if(min < 10) {
 if(sec < 10) {
     sec = 0 + sec;
 }
+// if(min < 70){
+//     day.innerHTML = `${d} ${m} ${y} `
+//     day.style.fontSize = "40px";
+// }
 time.innerText =  day_night;
 time.style.fontSize = "40px";    
 
+     //ditsy.innerHTML = `${d} ${m} ${y} `
      ditsy.innerHTML = `${d} ${m} ${y} `
+     //ditsy.innerHTML = today.toDateString();
+     
+     
     //console.log(ball);
     
     hour.textContent = h
